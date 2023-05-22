@@ -18,7 +18,22 @@ function onInput(e) {
         return;
     }
 
-    FOO.fetchCountries(onInputValue).then(makeMarkup);
+    FOO.fetchCountries(onInputValue)
+    .then ((allCountries) => {
+        const newArrey = [];
+        for (const country of allCountries) {
+            if (country.name.common.toLowerCase().includes(findCountry)) {
+                newArrey.push(country);
+            }
+        }
+        return newArrey;
+    })
+    .then(makeMarkup)
+    .catch ((err) => {
+        if (err.message === '400') {
+            console.log(err);
+        }
+    });
 }
 
 function makeMarkup(arr) {
