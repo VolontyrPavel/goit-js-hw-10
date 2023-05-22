@@ -30,8 +30,8 @@ function onInput(e) {
     })
     .then(makeMarkup)
     .catch ((err) => {
-        if (err.message === '400') {
-            console.log(err);
+        if (err.message === '404') {
+            console.log('404.Page not found');
         }
     });
 }
