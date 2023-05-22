@@ -31,8 +31,9 @@ function onInput(e) {
     .then(makeMarkup)
     .catch ((err) => {
         if (err.message === '404') {
-            console.log('404.Page not found');
+            Notiflix.Notify.failure('Oops, there is no country with that name');
         }
+    console.log(err);
     });
 }
 
